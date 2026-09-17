@@ -85,3 +85,17 @@ Small Forms
 Enterprise Forms
     → Reactive
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Routing Cheat Sheet](04-routing-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [NgRx Cheat Sheet](06-ngrx-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

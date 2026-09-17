@@ -1448,3 +1448,17 @@ for most business applications.
 ## Key Message
 
 Reactive Forms are Angular's preferred enterprise solution for collecting, validating, and managing user input through a scalable, testable, and Observable-driven architecture.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Lifecycle Hooks](14-lifecycle-hooks.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Subjects & BehaviorSubject](../04-reactivity/16-subjects-and-behaviorsubject.md)
+
+<br/>
+<!-- navigation-end -->

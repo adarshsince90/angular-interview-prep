@@ -969,4 +969,18 @@ Angular uses metadata to understand how a class should participate in the framew
 
 ## How does Dependency Injection benefit from TypeScript?
 
-Type information helps Angular identify and resolve 
+Type information helps Angular identify and resolve
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular Architecture Overview](04-angular-architecture-overview.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular Components](../02-core-angular/06-angular-components.md)
+
+<br/>
+<!-- navigation-end -->

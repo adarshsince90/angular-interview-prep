@@ -1360,3 +1360,17 @@ retry()
 # Key Message
 
 Senior Angular developers do not memorize RxJS operators. They identify the business requirement, understand the desired execution behavior, and then select the operator that best matches that behavior.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [RxJS Operators Deep Dive](17-rxjs-operators-deep-dive.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Async Pipe & RxJS Template Patterns](17b-async-pipe-and-rxjs-template-patterns.md)
+
+<br/>
+<!-- navigation-end -->

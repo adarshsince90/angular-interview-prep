@@ -1602,3 +1602,17 @@ Angular*Creates Dependency
 
 *hat separation is the entire purpo*e of Dependency Injection.
 ````*
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Services](09-services.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [HttpClient](11-http-client.md)
+
+<br/>
+<!-- navigation-end -->

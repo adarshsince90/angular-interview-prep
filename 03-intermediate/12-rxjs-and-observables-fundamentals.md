@@ -1231,3 +1231,17 @@ Cold Observables
 ## Key Message
 
 Observables are Angular's primary abstraction for asynchronous data streams and form the foundation of HttpClient, Reactive Forms, Routing Events, and many modern Angular architectural patterns.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [HttpClient](../02-core-angular/11-http-client.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Component Communication](13-component-communication.md)
+
+<br/>
+<!-- navigation-end -->

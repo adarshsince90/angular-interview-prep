@@ -1132,3 +1132,17 @@ Parent
 ## Key Message
 
 Angular component communication is primarily built around `@Input()` and `@Output()`, enabling clean, maintainable, and loosely coupled interaction between components.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [RxJS & Observables Fundamentals](12-rxjs-and-observables-fundamentals.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Lifecycle Hooks](14-lifecycle-hooks.md)
+
+<br/>
+<!-- navigation-end -->

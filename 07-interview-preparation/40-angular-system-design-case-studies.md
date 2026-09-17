@@ -634,3 +634,17 @@ Scalability
 ```
 
 rather than Angular syntax.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Behavioral Interview Preparation](39-behavioral-interview-preparation.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Quick-Fire Interview Q&A](41-quick-fire-qa.md)
+
+<br/>
+<!-- navigation-end -->

@@ -828,3 +828,17 @@ DI:
 ## Key Message
 
 Angular follows a layered architecture that separates UI, business logic, navigation, and infrastructure concerns, making enterprise applications easier to maintain and scale.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Component-Based Architecture](03-component-based-architecture.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [TypeScript Essentials for Angular](05-typescript-essentials-for-angular.md)
+
+<br/>
+<!-- navigation-end -->

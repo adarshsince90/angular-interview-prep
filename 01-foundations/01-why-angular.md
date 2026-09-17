@@ -46,3 +46,17 @@ Angular was created to help developers build large, maintainable, testable Singl
 ## Key Message
 
 Angular applies software engineering principles to frontend development and provides a structured way to build large web applications.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** *None (First Topic)* &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Single Page Application (SPA)](02-spa-concepts.md)
+
+<br/>
+<!-- navigation-end -->

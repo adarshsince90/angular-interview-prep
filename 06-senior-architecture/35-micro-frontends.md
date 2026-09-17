@@ -1950,3 +1950,17 @@ Main Benefit
 Main Cost
    = Complexity
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Enterprise Architecture](34-enterprise-architecture.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular Mock Interview Questions](../07-interview-preparation/36-mock-interview-questions.md)
+
+<br/>
+<!-- navigation-end -->

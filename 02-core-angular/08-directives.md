@@ -822,3 +822,17 @@ Changes Appearance/Behavi*r
 ## Why Only One Struct*ral Directive Per Element?
 
 Angula* can apply only one structural tra*sformation to an element at a time*
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Templates and Data Binding](07-templates-and-data-binding.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Services](09-services.md)
+
+<br/>
+<!-- navigation-end -->

@@ -49,3 +49,17 @@ Reducers must be pure because given the same state and action they should always
 
 How would you manage state across Micro Frontends?
 I would avoid a large shared store because it creates tight coupling and reduces team independence. I would keep business state owned by the respective micro frontend and only share truly global concerns such as authentication, current user, theme, locale, and feature flags through the shell or a shared platform service.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular System Design Case Studies](40-angular-system-design-case-studies.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular Cheat Sheet](../08-cheat-sheets/01-angular-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

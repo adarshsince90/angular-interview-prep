@@ -1233,3 +1233,17 @@ ngOnDestroy
 ## Key Message
 
 Lifecycle Hooks provide controlled entry points into Angular's component lifecycle, enabling initialization, change handling, view interaction, and cleanup at the appropriate stages.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Component Communication](13-component-communication.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Forms](15-forms.md)
+
+<br/>
+<!-- navigation-end -->

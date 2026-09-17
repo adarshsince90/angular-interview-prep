@@ -1387,3 +1387,17 @@ API
 ## Key Message
 
 Route parameters answer **"Which resource?"** while query parameters answer **"How should the resource be displayed?"**. Understanding this distinction makes Angular routing design much simpler and leads to cleaner, more maintainable enterprise applications.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Routing & Navigation](21-routing-and-navigation.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Route Guards](23-route-guards.md)
+
+<br/>
+<!-- navigation-end -->

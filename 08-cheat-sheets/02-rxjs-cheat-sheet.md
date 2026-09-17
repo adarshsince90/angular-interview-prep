@@ -161,3 +161,17 @@ Streams
 State
     = Signals
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular Cheat Sheet](01-angular-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Signals Cheat Sheet](03-signals-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

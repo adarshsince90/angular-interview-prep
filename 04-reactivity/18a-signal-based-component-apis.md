@@ -1258,4 +1258,18 @@ Incorrect.
 @Input()
 ```
 
-still 
+still
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Signals](18-signals.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [NgModules Fundamentals](../05-advanced/19-ngmodules-fundamentals.md)
+
+<br/>
+<!-- navigation-end -->

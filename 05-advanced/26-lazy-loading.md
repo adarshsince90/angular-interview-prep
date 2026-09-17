@@ -1221,3 +1221,17 @@ Background downloading of lazy-loaded bundles after startup.
 ## Trap 1
 
 Thinking
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Route Resolvers](25-route-resolvers.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [HTTP Interceptors](27-http-interceptors.md)
+
+<br/>
+<!-- navigation-end -->

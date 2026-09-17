@@ -1082,3 +1082,17 @@ Still common in enterprise applications.
 ## Key Message
 
 Templates are Angular's view layer, and Data Binding is the mechanism that keeps Component state and the UI synchronized.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular Components](06-angular-components.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Directives](08-directives.md)
+
+<br/>
+<!-- navigation-end -->

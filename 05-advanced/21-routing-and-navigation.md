@@ -1492,3 +1492,17 @@ provideRouter(routes)
 ## Key Message
 
 Angular Routing is the mechanism that maps URLs to components, enabling Single Page Application navigation, parameterized URLs, nested layouts, and enterprise-grade navigation patterns without full browser page reloads.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Standalone Components](20-standalone-components.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Route Parameters & Query Parameters Deep Dive](22-route-parameters-and-query-parameters-deep-dive.md)
+
+<br/>
+<!-- navigation-end -->

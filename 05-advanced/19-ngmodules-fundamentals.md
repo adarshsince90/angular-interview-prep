@@ -736,3 +736,17 @@ What Can Be Injected
 8. Core Modules provide applica*ion-wide services.
 9. NgModules re*ain important in many enterprise a*plications.
 10. Understanding NgMo*ules makes Standalone Components e*sier to understand.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Signal-Based Component APIs](../04-reactivity/18a-signal-based-component-apis.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Standalone Components](20-standalone-components.md)
+
+<br/>
+<!-- navigation-end -->

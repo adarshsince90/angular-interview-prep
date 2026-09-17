@@ -924,3 +924,17 @@ bootstrapApplication()
 ## Key Message
 
 Standalone Components remove much of the ceremony historically associated with Angular modules, resulting in a simpler, more explicit, and more maintainable architecture while preserving Angular's powerful dependency injection and routing capabilities.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [NgModules Fundamentals](19-ngmodules-fundamentals.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Routing & Navigation](21-routing-and-navigation.md)
+
+<br/>
+<!-- navigation-end -->

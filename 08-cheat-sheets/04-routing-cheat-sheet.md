@@ -117,3 +117,17 @@ Authentication
 Authorization
     = Guard + Backend Validation
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Signals Cheat Sheet](03-signals-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Forms Cheat Sheet](05-forms-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

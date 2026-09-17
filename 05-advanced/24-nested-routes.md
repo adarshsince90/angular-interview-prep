@@ -582,3 +582,17 @@ routerLink="/dashboard/users"
 ```
 
 Always starts from root
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Route Guards](23-route-guards.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Route Resolvers](25-route-resolvers.md)
+
+<br/>
+<!-- navigation-end -->

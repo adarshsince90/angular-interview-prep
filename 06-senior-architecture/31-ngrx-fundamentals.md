@@ -2450,3 +2450,17 @@ Selector Emits
 
 UI Updates
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [State Management Fundamentals](30-state-management-fundamentals.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Authentication & Authorization](32-authentication-authorization.md)
+
+<br/>
+<!-- navigation-end -->

@@ -1559,3 +1559,17 @@ Massive Dashboards
 ## Key Message
 
 Route Resolvers preload route-critical data before Angular activates a route, helping create cleaner components, more predictable navigation flows, and better user experiences for detail-oriented enterprise screens.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Nested Routes](24-nested-routes.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Lazy Loading](26-lazy-loading.md)
+
+<br/>
+<!-- navigation-end -->

@@ -1267,3 +1267,17 @@ Signal notification occurs.
 ---
 
 # Signals
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [HTTP Interceptors](27-http-interceptors.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular Performance Optimization](29-performance-optimization.md)
+
+<br/>
+<!-- navigation-end -->

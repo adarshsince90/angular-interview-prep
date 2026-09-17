@@ -426,3 +426,17 @@ instead of:
 ```text
 Technology Only
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular Testing Deep Dive](38-angular-testing-deep-dive.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular System Design Case Studies](40-angular-system-design-case-studies.md)
+
+<br/>
+<!-- navigation-end -->

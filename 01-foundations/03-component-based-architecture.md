@@ -293,4 +293,18 @@ DashboardComponent
 
 Dashboard becomes the Parent.
 
-EmployeeCard 
+EmployeeCard
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Single Page Application (SPA)](02-spa-concepts.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular Architecture Overview](04-angular-architecture-overview.md)
+
+<br/>
+<!-- navigation-end -->

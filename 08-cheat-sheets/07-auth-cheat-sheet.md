@@ -138,3 +138,17 @@ Authorization
 
 Permissions
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [NgRx Cheat Sheet](06-ngrx-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Enterprise Architecture Cheat Sheet](08-architecture-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

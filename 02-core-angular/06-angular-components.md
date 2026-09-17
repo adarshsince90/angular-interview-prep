@@ -883,3 +883,17 @@ Preferred:
 ## Senior Talking Point
 
 Components are architectural boundaries that improve modularity, reusability, maintainability, and testability in large Angular applications.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [TypeScript Essentials for Angular](../01-foundations/05-typescript-essentials-for-angular.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Templates and Data Binding](07-templates-and-data-binding.md)
+
+<br/>
+<!-- navigation-end -->

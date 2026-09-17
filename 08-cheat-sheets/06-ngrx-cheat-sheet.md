@@ -145,3 +145,17 @@ Effects Execute
 
 Selectors Read
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Forms Cheat Sheet](05-forms-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Authentication & Authorization Cheat Sheet](07-auth-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

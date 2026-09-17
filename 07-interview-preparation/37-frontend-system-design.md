@@ -281,3 +281,17 @@ Observability
 
 Deployment
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular Mock Interview Questions](36-mock-interview-questions.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Angular Testing Deep Dive](38-angular-testing-deep-dive.md)
+
+<br/>
+<!-- navigation-end -->

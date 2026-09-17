@@ -52,3 +52,17 @@ Browser
 ## Key Message
 
 Angular is a framework designed to build maintainable Single Page Applications that provide a rich user experience while keeping frontend and backend concerns separate.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Why Angular](01-why-angular.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Component-Based Architecture](03-component-based-architecture.md)
+
+<br/>
+<!-- navigation-end -->

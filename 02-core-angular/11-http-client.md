@@ -1408,3 +1408,17 @@ T
 ## Key Message
 
 HttpClient is Angular's strongly typed, DI-enabled HTTP communication library and serves as the bridge between Angular applications and backend APIs.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Dependency Injection (DI)](10-dependency-injection.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [RxJS & Observables Fundamentals](../03-intermediate/12-rxjs-and-observables-fundamentals.md)
+
+<br/>
+<!-- navigation-end -->

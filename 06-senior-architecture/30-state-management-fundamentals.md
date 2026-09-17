@@ -1721,3 +1721,17 @@ Immutable Updates
 ## Key Message
 
 State Management is the discipline of determining where state lives, who owns it, who can modify it, and how it flows through an application. Modern Angular applications often start with local state, evolve into service-based signal stores, and adopt NgRx only when state complexity becomes significant.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Angular Performance Optimization](../05-advanced/29-performance-optimization.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [NgRx Fundamentals](31-ngrx-fundamentals.md)
+
+<br/>
+<!-- navigation-end -->

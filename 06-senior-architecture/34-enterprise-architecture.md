@@ -1662,3 +1662,17 @@ Not components.
 ## What Are Cross-Cutting Concerns?
 
 Concerns affecting multiple features and layers
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Error Handling Strategy](33-error-handling-strategy.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Micro Frontends](35-micro-frontends.md)
+
+<br/>
+<!-- navigation-end -->

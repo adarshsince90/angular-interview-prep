@@ -988,3 +988,17 @@ const request =
 
         'X-Correlation-ID':
             crypto.randomUUID
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Lazy Loading](26-lazy-loading.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Change Detection](28-change-detection.md)
+
+<br/>
+<!-- navigation-end -->

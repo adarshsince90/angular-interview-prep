@@ -156,3 +156,17 @@ Business Logic → Services
 
 State → Store/Signals
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Quick-Fire Interview Q&A](../07-interview-preparation/41-quick-fire-qa.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [RxJS Cheat Sheet](02-rxjs-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

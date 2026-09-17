@@ -1138,3 +1138,17 @@ user()
 ## Key Message
 
 The Async Pipe is Angular's preferred way to consume Observable values in templates because it automatically manages subscriptions, updates the UI reactively, and prevents memory leaks while keeping components cleaner and easier to maintain.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Common Enterprise RxJS Scenarios](17a-common-enterprise-rxjs-scenarios.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Signals](18-signals.md)
+
+<br/>
+<!-- navigation-end -->

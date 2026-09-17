@@ -1518,3 +1518,17 @@ Deferrable Views
 ```
 
 for scalable enterprise applications.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Change Detection](28-change-detection.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [State Management Fundamentals](../06-senior-architecture/30-state-management-fundamentals.md)
+
+<br/>
+<!-- navigation-end -->

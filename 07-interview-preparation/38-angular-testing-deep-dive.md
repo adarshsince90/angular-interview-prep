@@ -375,3 +375,17 @@ Business-Critical Paths
 ```
 
 first.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Frontend System Design](37-frontend-system-design.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Behavioral Interview Preparation](39-behavioral-interview-preparation.md)
+
+<br/>
+<!-- navigation-end -->

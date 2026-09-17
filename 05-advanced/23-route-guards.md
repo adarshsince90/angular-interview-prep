@@ -1598,3 +1598,17 @@ CanMatchFn
 ## Key Message
 
 Route Guards act as Angular's navigation control layer, enabling authentication, authorization, feature management, and unsaved-change protection while ensuring users navigate only to routes they are allowed to access.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Route Parameters & Query Parameters Deep Dive](22-route-parameters-and-query-parameters-deep-dive.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Nested Routes](24-nested-routes.md)
+
+<br/>
+<!-- navigation-end -->

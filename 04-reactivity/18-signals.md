@@ -1667,3 +1667,17 @@ Search Pipelines
 ## Key Message
 
 Signals provide Angular's modern, lightweight, and reactive approach to UI state management, reducing the boilerplate traditionally associated with BehaviorSubject-based state while complementing, not replacing, RxJS.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Async Pipe & RxJS Template Patterns](17b-async-pipe-and-rxjs-template-patterns.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Signal-Based Component APIs](18a-signal-based-component-apis.md)
+
+<br/>
+<!-- navigation-end -->

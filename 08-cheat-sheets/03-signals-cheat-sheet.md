@@ -117,3 +117,17 @@ computed()
 
 effect()
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [RxJS Cheat Sheet](02-rxjs-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Routing Cheat Sheet](04-routing-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->

@@ -603,3 +603,17 @@ JWT
 Shell
  = Micro Frontend Host
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Micro Frontends](../06-senior-architecture/35-micro-frontends.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Frontend System Design](37-frontend-system-design.md)
+
+<br/>
+<!-- navigation-end -->

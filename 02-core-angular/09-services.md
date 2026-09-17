@@ -424,3 +424,17 @@ Most commonly:
 ```typescript
 @Injectable({
   providedIn
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Directives](08-directives.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Dependency Injection (DI)](10-dependency-injection.md)
+
+<br/>
+<!-- navigation-end -->

@@ -1408,3 +1408,17 @@ subject.getValue()
 ## Key Message
 
 A Subject enables multicast event publishing, while a BehaviorSubject additionally stores and exposes the current state, making it one of the most common mechanisms for sharing reactive data across Angular applications.
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Forms](../03-intermediate/15-forms.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [RxJS Operators Deep Dive](17-rxjs-operators-deep-dive.md)
+
+<br/>
+<!-- navigation-end -->

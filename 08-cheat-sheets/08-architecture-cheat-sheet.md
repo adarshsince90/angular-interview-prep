@@ -175,3 +175,17 @@ Feature Owns Its State
 
 Shell Owns Global Context
 ```
+
+<!-- navigation-start -->
+
+<br/>
+<br/>
+
+---
+
+<br/>
+
+⬅️ **Previous:** [Authentication & Authorization Cheat Sheet](07-auth-cheat-sheet.md) &nbsp;|&nbsp; 🏠 **[Table of Contents](../README.md)** &nbsp;|&nbsp; ➡️ **Next:** [Interview Day Quick Revision](09-interview-day-cheat-sheet.md)
+
+<br/>
+<!-- navigation-end -->
