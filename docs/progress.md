@@ -63,8 +63,8 @@
 '
 ## Interview Preparation
 
-- [ ] Angular Testing Deep Dive
-- [ ] Mock Interview Questions
-- [ ] Frontend System Design
-- [ ] Behavioral Interview Preparation
-- [ ] Angular System Design Case Studies
+- [x] Angular Testing Deep Dive
+- [x] Mock Interview Questions
+- [x] Frontend System Design
+- [x] Behavioral Interview Preparation
+- [x] Angular System Design Case Studies

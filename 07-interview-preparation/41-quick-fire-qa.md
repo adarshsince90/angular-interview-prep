@@ -1,4 +1,8 @@
-Why does Angular use TypeScript?
+# Quick-Fire Interview Q&A
+
+## Core Technical Q&A
+
+### Why does Angular use TypeScript?
 Angular is designed for large enterprise applications, and TypeScript provides the foundation that makes that practical. It adds static typing, interfaces, generics, decorators, and rich tooling support. Angular relies heavily on decorators and metadata for features such as components, services, dependency injection, routing, and framework configuration. TypeScript also improves maintainability, refactoring safety, and developer productivity when working with large codebases.
 
 How does angular help Components?
