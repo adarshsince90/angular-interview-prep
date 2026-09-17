@@ -39,8 +39,8 @@ export class MarkdownSanitizerService {
 
       // Check if this is a Table of Contents link pointing to README.md
       if (token.href && /readme\.md/i.test(token.href)) {
-        finalHref = `/topic/01-why-angular`;
-        return `<a href="${finalHref}" class="internal-topic-link" data-topic-id="01-why-angular" title="Table of Contents">${text}</a>`;
+        finalHref = `/dashboard`;
+        return `<a href="${finalHref}" class="internal-topic-link" data-topic-id="dashboard" title="Curriculum Overview">${text}</a>`;
       }
 
       // Check if this is an internal link to another markdown file (e.g. `02-spa-concepts.md` or `../02-core-angular/06-xxx.md`)
@@ -60,6 +60,24 @@ export class MarkdownSanitizerService {
       return linkHtml;
     };
 
+    // Heading renderer with unique slug IDs for anchor jumps
+    renderer.heading = ({ text, depth }: any) => {
+      const slug = text
+        .toLowerCase()
+        .replace(/<[^>]+>/g, '')
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .trim();
+      return `<h${depth} id="${slug}" class="heading-anchor-target">${text}</h${depth}>`;
+    };
+
+    // Table renderer with responsive overflow container
+    renderer.table = (token: any) => {
+      // @ts-ignore
+      const originalHtml = Renderer.prototype.table.call(renderer, token);
+      return `<div class="table-scroll-wrapper">${originalHtml}</div>`;
+    };
+
     // Syntax highlighting in code blocks
     renderer.code = ({ text, lang }) => {
       const language = lang && Prism.languages[lang] ? lang : 'typescript';
@@ -74,7 +92,7 @@ export class MarkdownSanitizerService {
       }
 
       const displayLang = (lang || 'code').toUpperCase();
-      return `<div class="code-block-wrapper"><div class="code-block-header"><div class="code-header-left"><span class="code-window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></span><span class="code-lang-tag">${displayLang}</span></div><button type="button" class="code-copy-btn" onclick="navigator.clipboard.writeText(this.closest('.code-block-wrapper').querySelector('code').innerText);this.classList.add('copied');this.querySelector('.btn-copy-label').innerText='Copied!';setTimeout(()=>{this.classList.remove('copied');this.querySelector('.btn-copy-label').innerText='Copy'},1800)" title="Copy code"><svg class="copy-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span class="btn-copy-label">Copy</span></button></div><pre class="language-${language}"><code class="language-${language}">${highlighted}</code></pre></div>`;
+      return `<div class="code-block-wrapper"><div class="code-block-header"><div class="code-header-left"><span class="code-window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></span><span class="code-lang-tag">${displayLang}</span></div><button type="button" class="code-copy-btn" title="Copy code snippet"><svg class="copy-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span class="btn-copy-label">Copy</span></button></div><pre class="language-${language}"><code class="language-${language}">${highlighted}</code></pre></div>`;
     };
 
     marked.setOptions({
@@ -95,7 +113,7 @@ export class MarkdownSanitizerService {
     clean = clean.replace(/\n\s*⬅️[\s\S]*?🏠[^\n]*/gi, '');
 
     // 2. Transform the initial Interview Priority block into an Interview Intelligence Card
-    const metaRegex = /##\s*Interview Priority\s+([^\r\n#]+)\s+##\s*Interview Frequency\s+([^\r\n#]+)\s+##\s*Recommended Depth\s+([^\r\n#]+)\s+##\s*Relevant For\s+([\s\S]*?)(?=\r?\n\s*---\s*|\r?\n\s*#+|$)/i;
+    const metaRegex = /##\s*Interview Priority\s*\n+([^\n#]+)\n+##\s*Interview Frequency\s*\n+([^\n#]+)\n+##\s*Recommended Depth\s*\n+([^\n#]+)\n+##\s*Relevant For\s*\n+([\s\S]*?)(?=\n\s*---\s*|\n\s*#+|$)/i;
 
     clean = clean.replace(metaRegex, (_match, priorityRaw, freqRaw, depthRaw, rolesRaw) => {
       const cleanVal = (s: string) => s.replace(/^\*+|\*+$/g, '').trim();
@@ -152,8 +170,8 @@ export class MarkdownSanitizerService {
       const processed = this.preprocessMarkdown(markdown);
       const rawHtml = marked.parse(processed) as string;
       const cleanHtml = DOMPurify.sanitize(rawHtml, {
-        ADD_ATTR: ['target', 'rel', 'data-topic-id', 'class'],
-        ADD_TAGS: ['button', 'div', 'span']
+        ADD_ATTR: ['target', 'rel', 'data-topic-id', 'class', 'id', 'title'],
+        ADD_TAGS: ['button', 'div', 'span', 'svg', 'path', 'rect', 'polyline', 'circle', 'line']
       });
       return this.sanitizer.bypassSecurityTrustHtml(cleanHtml);
     } catch (err) {

@@ -1,16 +1,28 @@
 import { Component, inject, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   template: `
     <header class="app-header glass-panel">
       <div class="header-left">
-        <a routerLink="/" class="brand-link">
+        <!-- Mobile Menu Toggle Button (< 900px) -->
+        <button
+          class="icon-btn mobile-menu-btn"
+          (click)="facade.toggleMobileMenu()"
+          title="Toggle Navigation Menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <a routerLink="/dashboard" class="brand-link" title="Return to Dashboard">
           <div class="logo-icon">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -24,37 +36,25 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
           </div>
         </a>
 
-        <!-- Track Filter -->
-        <div class="track-selector">
-          <button
-            class="track-btn"
-            [class.active]="facade.activeTrack() === 'all'"
-            (click)="facade.setActiveTrack('all')">
-            All ({{ facade.manifest()?.totalTopics ?? 54 }})
-          </button>
-          <button
-            class="track-btn"
-            [class.active]="facade.activeTrack() === 'architect'"
-            (click)="facade.setActiveTrack('architect')">
-            🛡️ Architect
-          </button>
-          <button
-            class="track-btn"
-            [class.active]="facade.activeTrack() === 'reactivity'"
-            (click)="facade.setActiveTrack('reactivity')">
-            ⚡ Reactivity
-          </button>
-          <button
-            class="track-btn"
-            [class.active]="facade.activeTrack() === 'cram'"
-            (click)="facade.setActiveTrack('cram')">
-            ⏱️ 1-Hr Cram
-          </button>
-        </div>
+        <!-- Primary Feature Hub Links -->
+        <nav class="feature-nav-links">
+          <a routerLink="/dashboard" routerLinkActive="active" class="feat-link" title="Curriculum Overview">
+            <span class="feat-icon">🏠</span>
+            <span class="feat-label">Dashboard</span>
+          </a>
+          <a routerLink="/flashcards" routerLinkActive="active" class="feat-link" title="Practice 192 Flashcards">
+            <span class="feat-icon">🎴</span>
+            <span class="feat-label">Flashcards</span>
+          </a>
+          <a routerLink="/labs" routerLinkActive="active" class="feat-link" title="Runtime Architecture Simulations">
+            <span class="feat-icon">📊</span>
+            <span class="feat-label">Labs</span>
+          </a>
+        </nav>
       </div>
 
       <div class="header-right">
-        <!-- Search Trigger -->
+        <!-- Quick Search Trigger -->
         <button class="search-trigger-btn" (click)="facade.toggleSearch()" title="Search Topics (Cmd+K)">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
@@ -67,11 +67,12 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
         <!-- Progress Indicator -->
         <div class="progress-pill" title="{{ facade.completedCount() }} of {{ facade.totalTopicsCount() }} completed">
           <span class="progress-dot"></span>
-          <span class="progress-text">{{ facade.progressPercent() }}% Mastered</span>
+          <span class="progress-text">{{ facade.progressPercent() }}%</span>
+          <span class="progress-long-text">Mastered</span>
         </div>
 
         <!-- Quick Recap Slideout Toggle -->
-        <button class="icon-btn" (click)="facade.toggleDrawer()" title="Toggle Quick Recap Sheet">
+        <button class="icon-btn" (click)="facade.toggleDrawer()" title="Toggle Executive Recap Sheet">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
@@ -123,12 +124,17 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       background: var(--glass-bg);
       border-radius: 1rem;
       box-shadow: var(--glass-shadow);
+      transition: all var(--transition-fast);
     }
 
     .header-left, .header-right {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
+    }
+
+    .mobile-menu-btn {
+      display: none !important;
     }
 
     .brand-link {
@@ -137,6 +143,7 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       gap: 0.75rem;
       text-decoration: none;
       color: inherit;
+      flex-shrink: 0;
     }
 
     .logo-icon {
@@ -164,6 +171,7 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      white-space: nowrap;
     }
 
     .brand-badge {
@@ -172,40 +180,42 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       letter-spacing: 0.08em;
       color: var(--accent-cyan);
       font-weight: 700;
+      white-space: nowrap;
     }
 
-    .track-selector {
+    /* Primary Links */
+    .feature-nav-links {
       display: flex;
       align-items: center;
-      background: rgba(0, 0, 0, 0.18);
-      padding: 0.2rem;
-      border-radius: 0.6rem;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      gap: 0.35rem;
       margin-left: 0.5rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      padding-left: 0.75rem;
     }
 
-    .track-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      font-size: 0.75rem;
-      font-weight: 600;
+    .feat-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
       padding: 0.35rem 0.65rem;
-      border-radius: 0.45rem;
-      cursor: pointer;
+      border-radius: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-decoration: none;
       transition: all var(--transition-fast);
-      font-family: inherit;
+      border: 1px solid transparent;
     }
 
-    .track-btn:hover {
+    .feat-link:hover {
       color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    .track-btn.active {
-      background: rgba(0, 243, 255, 0.15);
+    .feat-link.active {
       color: var(--accent-cyan);
-      border: 1px solid rgba(0, 243, 255, 0.3);
-      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+      background: rgba(0, 243, 255, 0.1);
+      border-color: rgba(0, 243, 255, 0.25);
     }
 
     .search-trigger-btn {
@@ -250,6 +260,7 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--accent-emerald);
+      white-space: nowrap;
     }
 
     .progress-dot {
@@ -272,6 +283,7 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       color: var(--text-secondary);
       cursor: pointer;
       transition: all var(--transition-fast);
+      flex-shrink: 0;
     }
 
     .icon-btn:hover {
@@ -280,11 +292,64 @@ import { ReaderFacade, TrackFilter } from '../../state/reader.facade';
       box-shadow: 0 0 12px var(--accent-cyan-glow);
     }
 
-    @media (max-width: 900px) {
-      .track-selector {
+    /* Light Theme Overrides */
+    [data-theme='light'] .search-trigger-btn {
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: var(--text-secondary);
+    }
+
+    [data-theme='light'] .search-kbd {
+      background: rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(15, 23, 42, 0.15);
+      color: var(--text-secondary);
+    }
+
+    [data-theme='light'] .icon-btn {
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: var(--text-secondary);
+    }
+
+    [data-theme='light'] .feat-link:hover {
+      background: rgba(15, 23, 42, 0.06);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .search-label, .search-kbd {
         display: none;
       }
-      .search-label, .search-kbd {
+      .progress-long-text {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+      .feat-label {
+        display: none;
+      }
+      .feature-nav-links {
+        padding-left: 0.4rem;
+        margin-left: 0.3rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .app-header {
+        margin: 0.35rem 0.5rem 0.5rem 0.5rem;
+        padding: 0 0.85rem;
+      }
+      .brand-badge {
+        display: none;
+      }
+      .brand-title {
+        font-size: 0.95rem;
+      }
+      .progress-pill {
         display: none;
       }
     }

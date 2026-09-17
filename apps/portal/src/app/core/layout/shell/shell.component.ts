@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { QuickRecapDrawerComponent } from '../drawer/quick-recap-drawer.component';
 import { SearchModalComponent } from '../search-modal/search-modal.component';
 import { ScrollToTopComponent } from '../scroll-to-top/scroll-to-top.component';
+import { ReaderFacade } from '../../state/reader.facade';
 
 @Component({
   selector: 'app-shell',
@@ -22,6 +23,15 @@ import { ScrollToTopComponent } from '../scroll-to-top/scroll-to-top.component';
       <app-header />
       <div class="shell-body">
         <app-sidebar />
+        @if (facade.isMobileMenuOpen()) {
+          <div
+            class="sidebar-backdrop"
+            (click)="facade.setMobileMenuOpen(false)"
+            role="button"
+            tabindex="0"
+            aria-label="Close sidebar backdrop">
+          </div>
+        }
         <main class="main-viewport">
           <router-outlet />
         </main>
@@ -46,6 +56,29 @@ import { ScrollToTopComponent } from '../scroll-to-top/scroll-to-top.component';
       margin: 0 auto;
       width: 100%;
       padding-bottom: 2rem;
+      position: relative;
+    }
+
+    .sidebar-backdrop {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 2400;
+        animation: fadeIn 180ms ease;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .main-viewport {
@@ -61,4 +94,6 @@ import { ScrollToTopComponent } from '../scroll-to-top/scroll-to-top.component';
     }
   `]
 })
-export class ShellComponent {}
+export class ShellComponent {
+  readonly facade = inject(ReaderFacade);
+}

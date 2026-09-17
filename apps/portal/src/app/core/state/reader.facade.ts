@@ -12,6 +12,7 @@ export class ReaderFacade {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly contentService = inject(ContentService);
   private readonly COMPLETED_STORAGE_KEY = 'aip_portal_completed_topics';
+  private readonly LAST_TOPIC_STORAGE_KEY = 'aip_portal_last_active_topic';
 
   // Signals state
   readonly manifest = signal<ContentManifest | null>(null);
@@ -19,11 +20,14 @@ export class ReaderFacade {
   readonly viewMode = signal<ViewMode>('deep-dive');
   readonly isDrawerOpen = signal<boolean>(false);
   readonly isSearchOpen = signal<boolean>(false);
+  readonly isMobileMenuOpen = signal<boolean>(false);
   readonly activeTrack = signal<TrackFilter>('all');
   readonly completedTopicIds = signal<Set<string>>(this.loadCompletedTopics());
+  readonly lastActiveTopicId = signal<string>(this.loadLastActiveTopic());
 
   // Computed signals
   readonly totalTopicsCount = computed(() => this.manifest()?.totalTopics ?? 0);
+  readonly totalFlashcardsCount = computed(() => this.manifest()?.totalFlashcards ?? 0);
   readonly completedCount = computed(() => this.completedTopicIds().size);
   readonly progressPercent = computed(() => {
     const total = this.totalTopicsCount();
@@ -56,9 +60,11 @@ export class ReaderFacade {
     this.contentService.getManifest().subscribe({
       next: data => {
         this.manifest.set(data);
-        // If no active topic, default to the first one
+        // If no active topic, default to the last accessed or first one
         if (!this.activeTopic() && data.topics.length > 0) {
-          this.activeTopic.set(data.topics[0]);
+          const lastId = this.lastActiveTopicId();
+          const found = data.topics.find(t => t.id === lastId);
+          this.activeTopic.set(found || data.topics[0]);
         }
       },
       error: err => console.error('ReaderFacade failed to load manifest:', err)
@@ -71,7 +77,10 @@ export class ReaderFacade {
     const found = m.topics.find(t => t.id === id || t.slug === id);
     if (found) {
       this.activeTopic.set(found);
+      this.saveLastActiveTopic(found.id);
     }
+    // Auto close mobile drawer on navigation
+    this.setMobileMenuOpen(false);
   }
 
   setViewMode(mode: ViewMode): void {
@@ -92,6 +101,14 @@ export class ReaderFacade {
 
   setSearchOpen(isOpen: boolean): void {
     this.isSearchOpen.set(isOpen);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update(v => !v);
+  }
+
+  setMobileMenuOpen(isOpen: boolean): void {
+    this.isMobileMenuOpen.set(isOpen);
   }
 
   setActiveTrack(track: TrackFilter): void {
@@ -115,6 +132,28 @@ export class ReaderFacade {
     return this.completedTopicIds().has(topicId);
   }
 
+  getCategoryCompletedCount(catKey: string): number {
+    const m = this.manifest();
+    if (!m) return 0;
+    const catTopics = m.topics.filter(t => t.category === catKey);
+    const completed = this.completedTopicIds();
+    return catTopics.filter(t => completed.has(t.id)).length;
+  }
+
+  getCategoryProgressPercent(catKey: string): number {
+    const m = this.manifest();
+    if (!m) return 0;
+    const catTopics = m.topics.filter(t => t.category === catKey);
+    if (catTopics.length === 0) return 0;
+    const done = this.getCategoryCompletedCount(catKey);
+    return Math.min(100, Math.round((done / catTopics.length) * 100));
+  }
+
+  resetProgress(): void {
+    this.completedTopicIds.set(new Set());
+    this.saveCompletedTopics(new Set());
+  }
+
   private loadCompletedTopics(): Set<string> {
     if (!isPlatformBrowser(this.platformId)) {
       return new Set();
@@ -134,6 +173,25 @@ export class ReaderFacade {
     if (!isPlatformBrowser(this.platformId)) return;
     try {
       localStorage.setItem(this.COMPLETED_STORAGE_KEY, JSON.stringify(Array.from(set)));
+    } catch {
+      // ignore
+    }
+  }
+
+  private loadLastActiveTopic(): string {
+    if (!isPlatformBrowser(this.platformId)) return '01-why-angular';
+    try {
+      return localStorage.getItem(this.LAST_TOPIC_STORAGE_KEY) || '01-why-angular';
+    } catch {
+      return '01-why-angular';
+    }
+  }
+
+  private saveLastActiveTopic(id: string): void {
+    this.lastActiveTopicId.set(id);
+    if (!isPlatformBrowser(this.platformId)) return;
+    try {
+      localStorage.setItem(this.LAST_TOPIC_STORAGE_KEY, id);
     } catch {
       // ignore
     }
