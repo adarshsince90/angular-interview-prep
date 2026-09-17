@@ -275,6 +275,54 @@ type CDStrategy = 'Default' | 'OnPush' | 'Zoneless';
       color: var(--text-muted);
       font-weight: 600;
     }
+
+    /* Light Theme Overrides */
+    [data-theme='light'] .tree-node {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    [data-theme='light'] .tree-node.checked {
+      background: rgba(244, 63, 94, 0.12);
+      border-color: #f43f5e;
+      box-shadow: 0 0 16px rgba(244, 63, 94, 0.3);
+    }
+
+    [data-theme='light'] .target-node {
+      background: #f0f9ff;
+      border-color: #0284c7;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.14);
+    }
+
+    [data-theme='light'] .node-label {
+      color: #0f172a;
+    }
+
+    [data-theme='light'] .node-cd {
+      color: #0284c7;
+      font-weight: 700;
+    }
+
+    [data-theme='light'] .strategy-picker {
+      background: rgba(15, 23, 42, 0.05);
+      border: 1px solid rgba(15, 23, 42, 0.1);
+    }
+
+    [data-theme='light'] .mode-btn {
+      color: #475569;
+    }
+
+    [data-theme='light'] .mode-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+    }
+
+    [data-theme='light'] .viz-header {
+      border-color: rgba(226, 232, 240, 0.9);
+    }
   `]
 })
 export class ChangeDetectionTreeVisualizerComponent {

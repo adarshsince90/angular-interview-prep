@@ -26,6 +26,9 @@ import { SearchResult } from '../../models/content.model';
               placeholder="Search 54+ Angular architecture topics, flashcards, keywords..."
               [(ngModel)]="searchQuery"
               (ngModelChange)="onSearchChange($event)"
+              (keydown.arrowdown)="onKeyDownArrow(1, $event)"
+              (keydown.arrowup)="onKeyDownArrow(-1, $event)"
+              (keydown.enter)="onKeyDownEnter($event)"
               (keydown.escape)="facade.setSearchOpen(false)"
               autofocus />
           </div>
@@ -40,8 +43,12 @@ import { SearchResult } from '../../models/content.model';
         </div>
 
         <div class="search-results">
-          @for (result of results(); track result.topic.id) {
-            <button class="result-item" (click)="selectResult(result)">
+          @for (result of results(); track result.topic.id; let idx = $index) {
+            <button
+              class="result-item"
+              [class.selected]="idx === selectedIndex()"
+              (click)="selectResult(result)"
+              (mouseenter)="selectedIndex.set(idx)">
               <div class="result-top">
                 <span class="result-category">{{ result.topic.categoryTitle }}</span>
                 <span class="result-match-type">{{ result.matchedOn }}</span>
@@ -205,14 +212,15 @@ import { SearchResult } from '../../models/content.model';
       font-family: inherit;
     }
 
-    .result-item:hover, .result-item:focus {
+    .result-item:hover, .result-item:focus, .result-item.selected {
       background: rgba(0, 243, 255, 0.08);
       border-color: var(--accent-cyan);
-      transform: translateX(3px);
+      transform: translateX(4px);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
-    [data-theme='light'] .result-item:hover {
+    [data-theme='light'] .result-item:hover,
+    [data-theme='light'] .result-item.selected {
       background: rgba(2, 132, 199, 0.08);
       border-color: rgba(2, 132, 199, 0.4);
     }
@@ -278,6 +286,27 @@ import { SearchResult } from '../../models/content.model';
       color: var(--accent-cyan);
       font-weight: 600;
     }
+
+    @media (max-width: 600px) {
+      .search-dialog {
+        top: 4%;
+        width: 95vw;
+        max-height: 90vh;
+        border-radius: 1rem;
+      }
+      .search-header {
+        padding: 0.85rem;
+      }
+      .search-results {
+        padding: 0.65rem;
+      }
+      .result-item {
+        padding: 0.75rem 0.9rem;
+      }
+      .result-title {
+        font-size: 0.95rem;
+      }
+    }
   `]
 })
 export class SearchModalComponent {
@@ -287,15 +316,39 @@ export class SearchModalComponent {
 
   searchQuery = '';
   readonly results = signal<SearchResult[]>([]);
+  readonly selectedIndex = signal<number>(0);
 
   constructor() {
     this.onSearchChange('');
   }
 
   onSearchChange(query: string): void {
+    this.selectedIndex.set(0);
     this.searchService.search(query).subscribe(res => {
       this.results.set(res);
+      this.selectedIndex.set(0);
     });
+  }
+
+  onKeyDownArrow(direction: number, event: Event): void {
+    event.preventDefault();
+    const count = this.results().length;
+    if (count === 0) return;
+    this.selectedIndex.update(idx => {
+      const next = idx + direction;
+      if (next < 0) return 0;
+      if (next >= count) return count - 1;
+      return next;
+    });
+  }
+
+  onKeyDownEnter(event: Event): void {
+    event.preventDefault();
+    const list = this.results();
+    const idx = this.selectedIndex();
+    if (list.length > 0 && idx >= 0 && idx < list.length) {
+      this.selectResult(list[idx]);
+    }
   }
 
   selectResult(result: SearchResult): void {

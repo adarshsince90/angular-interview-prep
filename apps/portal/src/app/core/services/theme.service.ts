@@ -31,16 +31,13 @@ export class ThemeService {
 
   private getInitialTheme(): AppTheme {
     if (!isPlatformBrowser(this.platformId)) {
-      return 'dark';
+      return 'light';
     }
     const saved = localStorage.getItem(this.STORAGE_KEY) as AppTheme | null;
     if (saved === 'light' || saved === 'dark') {
       return saved;
     }
-    // Check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      return 'light';
-    }
-    return 'dark';
+    // Default to light theme
+    return 'light';
   }
 }

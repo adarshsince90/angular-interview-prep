@@ -1,10 +1,13 @@
-﻿# 🅰️ Angular Interview Mastery & Enterprise Architecture Guide
+# 🅰️ Angular Interview Mastery & Enterprise Architecture Guide
 
 [![Angular](https://img.shields.io/badge/Angular-18%2B%20%7C%2019%20Ready-dd0031.svg?logo=angular)](https://angular.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0%2B-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Live Portal](https://img.shields.io/badge/Live%20Portal-adarshsince90.github.io-brightgreen.svg?logo=googlechrome)](https://adarshsince90.github.io/angular-interview-prep/)
 [![Focus](https://img.shields.io/badge/Focus-First%20Principles%20%26%20Enterprise%20Design-success.svg)](#-learning-philosophy)
 [![Target](https://img.shields.io/badge/Audience-Senior%20%7C%20Lead%20%7C%20Architect-orange.svg)](#-target-audience)
-[![Status](https://img.shields.io/badge/Status-Actively%20Maintained-brightgreen.svg)](#-progress--roadmap)
+[![Status](https://img.shields.io/badge/Status-Completed%20%26%20Live-brightgreen.svg)](#-progress--roadmap)
+
+> 🌐 **Live Interactive Portal**: Explore the documentation, interactive flashcards, architectural visualizers, and cheat sheets live at [**adarshsince90.github.io/angular-interview-prep**](https://adarshsince90.github.io/angular-interview-prep/).
 
 A curated, first-principles knowledge base and interview preparation guide for modern Angular, tailored for **Senior Full-Stack Developers, Frontend Tech Leads, and Enterprise Architects**.
 
@@ -147,14 +150,31 @@ Depending on your preparation timeline, choose your pathway:
   - [x] Senior architecture, micro frontends, enterprise error handling
   - [x] Production web application security guide (.NET + Angular)
   - [x] Complete suite of rapid revision cheat sheets
-- [ ] **Phase 2: Interactive Web Experience**
-  - [ ] Standalone Angular reader portal
-  - [ ] Instant search across all 31,000+ lines of documentation
-  - [ ] Interactive flashcard / self-assessment quiz mode
-  - [ ] Signals reactive graph & Change Detection visualizer widgets
+- [x] **Phase 2: Interactive Web Experience (Completed & Live)**
+  - [x] Standalone Angular 19+ portal (`apps/portal`) with Glassmorphic design
+  - [x] Global instant modal search across all documentation with `Ctrl+K` shortcuts
+  - [x] Interactive Flashcards Hub with category filtering & confidence rating
+  - [x] Visualizer Lab with real-time Signals Reactive Graph and Change Detection cycle simulators
+  - [x] Responsive layout with collapsible sidebar, reading progress tracker, and scroll-to-top controls
+  - [x] Live GitHub Pages deployment: [adarshsince90.github.io/angular-interview-prep](https://adarshsince90.github.io/angular-interview-prep/)
+
+---
+
+## 💻 Running the Portal Locally
+
+The interactive web portal is located under `apps/portal/`. To run it locally:
+
+```bash
+cd apps/portal
+npm install
+npm start
+```
+
+Navigate to `http://localhost:4200/` in your browser.
 
 ---
 
 ## 🤝 Contributing & Feedback
 
 Suggestions, corrections, or requests for additional real-world case studies are welcome. Feel free to open an issue or submit a pull request!
+

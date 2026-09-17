@@ -243,6 +243,68 @@ import { Component, signal, computed, effect } from '@angular/core';
       color: var(--text-secondary);
       line-height: 1.45;
     }
+
+    /* Light Theme Contrast Overrides */
+    [data-theme='light'] .graph-node {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    [data-theme='light'] .signal-node {
+      background: #f0f9ff;
+      border-color: #0284c7;
+      box-shadow: 0 4px 18px rgba(2, 132, 199, 0.16);
+    }
+
+    [data-theme='light'] .computed-node {
+      background: #f5f3ff;
+      border-color: #6366f1;
+      box-shadow: 0 4px 18px rgba(99, 102, 241, 0.14);
+    }
+
+    [data-theme='light'] .effect-node {
+      background: #ecfdf5;
+      border-color: #10b981;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.14);
+    }
+
+    [data-theme='light'] .node-code {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    [data-theme='light'] .node-val {
+      color: #475569;
+      font-weight: 600;
+    }
+
+    [data-theme='light'] .node-val strong {
+      color: #0f172a;
+      font-weight: 800;
+    }
+
+    [data-theme='light'] .signal-node .node-type {
+      color: #0284c7;
+    }
+
+    [data-theme='light'] .computed-node .node-type {
+      color: #4f46e5;
+    }
+
+    [data-theme='light'] .effect-node .node-type {
+      color: #059669;
+    }
+
+    [data-theme='light'] .edge-arrow {
+      color: #0284c7;
+      font-weight: 700;
+    }
+
+    [data-theme='light'] .viz-header,
+    [data-theme='light'] .viz-notes {
+      border-color: rgba(226, 232, 240, 0.9);
+    }
   `]
 })
 export class SignalsGraphVisualizerComponent {

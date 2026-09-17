@@ -15,12 +15,12 @@ describe('MarkdownSanitizerService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should rewrite README.md links to /topic/01-why-angular', () => {
+  it('should rewrite README.md links to /dashboard', () => {
     const markdown = 'Check the [Table of Contents](../README.md) here.';
     const result = service.renderMarkdown(markdown) as any;
     const htmlString = result.changingThisBreaksApplicationSecurity || '';
-    expect(htmlString).toContain('href="/topic/01-why-angular"');
-    expect(htmlString).toContain('data-topic-id="01-why-angular"');
+    expect(htmlString).toContain('href="/dashboard"');
+    expect(htmlString).toContain('data-topic-id="dashboard"');
   });
 
   it('should rewrite relative topic .md links to SPA routes', () => {

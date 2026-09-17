@@ -1,4 +1,4 @@
-﻿# Operating System Files
+# Operating System Files
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
@@ -39,3 +39,7 @@ coverage/
 # Local Prompts & Agent Scaffolding
 .agents/
 .agent/
+
+# Temporary Documentation & Drafts
+docs/.temp/
+.temp/
