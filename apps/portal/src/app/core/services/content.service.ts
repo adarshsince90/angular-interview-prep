@@ -12,10 +12,10 @@ export class ContentService {
 
   getManifest(): Observable<ContentManifest> {
     if (!this.manifestCache$) {
-      this.manifestCache$ = this.http.get<ContentManifest>('/assets/content-manifest.json').pipe(
+      this.manifestCache$ = this.http.get<ContentManifest>('assets/content-manifest.json').pipe(
         catchError(err => {
-          console.error('Failed to load content manifest from /assets/, falling back to assets/content-manifest.json', err);
-          return this.http.get<ContentManifest>('assets/content-manifest.json');
+          console.warn('Failed to load content manifest from relative assets/, falling back to /assets/', err);
+          return this.http.get<ContentManifest>('/assets/content-manifest.json');
         }),
         shareReplay(1)
       );
