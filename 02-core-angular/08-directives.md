@@ -204,26 +204,26 @@ Legacy:
 Structural Directives can:
 
 ```text
-Create Elements*Remove Elements
+Create Elements / Remove Elements
 Repeat Elements
-``*
+```
 
-They change the DOM tree itself.*
+They change the DOM tree itself.
 ---
 
-# Example: Conditional Rende*ing
+# Example: Conditional Rendering
 
 Modern Angular:
 
 ```html
-@if *isAdmin) {
-    <button>Delete</but*on>
+@if (isAdmin) {
+    <button>Delete</button>
 }
 ```
 
 If condition is false:
-*```text
-Button does not exist in D*M
+```text
+Button does not exist in DOM
 ```
 
 Not hidden.
@@ -252,7 +252,7 @@ Modern Angular:
 
 ```html
 @for(employee of employees;
-     track employee.id) *
+     track employee.id) {
 
   <app-employee-card />
 }
@@ -264,7 +264,7 @@ Angular creates one DOM element per employee.
 
 # Legacy Version
 
-`*`html
+```html
 <div *ngFor="let employee of employees">
 
 </div>
@@ -300,14 +300,15 @@ which improves readability.
 Structural Directives:
 
 ```text
-Add Element*
+Add Elements
 Remove Elements
 Repeat Elements
-`*`
+```
 
 They modify DOM structure.
 
----*
+---
+
 # Interview Question
 
 ### What is a Structural Directive?
@@ -321,9 +322,9 @@ A Structural Directive modifies the structure of the DOM by adding, removing, or
 Legacy Example:
 
 ```html
-<d*v
+<div
  *ngIf="isVisible"
- *ngFor="let *mp of employees">
+ *ngFor="let emp of employees">
 </div>
 ```
 
@@ -336,22 +337,23 @@ should occur first.
 
 Solution:
 
-`*`html
-<ng-container *ngIf="isVisib*e">
-    <div *ngFor="let emp of em*loyees">
+```html
+<ng-container *ngIf="isVisible">
+    <div *ngFor="let emp of employees">
 
     </div>
-</ng-containe*>
+</ng-container>
 ```
 
 Common interview question.
-*---
+---
 
 # 3. Attribute Directives
 
 Attribute Directives modify:
 
-```text*Appearance
+```text
+Appearance
 Behavior
 ```
 
@@ -375,16 +377,16 @@ Angular changes:
 
 ```text
 CSS Classes
-``*
+```
 
-only*
+only
 
 ---
 
 # Another Example
 
 ```html
-*div [ngStyle]="styles">
+<div [ngStyle]="styles">
 ```
 
 Angular modifies styles.
@@ -395,41 +397,42 @@ DOM structure remains unchanged.
 
 # Attribute Directive Mental Model
 
-Attribute*Directives:
+Attribute Directives:
 
 ```text
-Element Stays*
+Element Stays
 Behavior Changes
-Appearance Chang*s**``
+Appearance Changes
+```
 
 ---
 
 # ngClass
 
-One of the mos* common Attribute Directives.
+One of the most common Attribute Directives.
 
-Exa*ple:
+Example:
 
 ```typescript
-statusClass = *success';
+statusClass = 'success';
 ```
 
 Template:
 
 ```html
-*div [ngClass]="statusClass">
-    S*ved Successfully
+<div [ngClass]="statusClass">
+    Saved Successfully
 </div>
 ```
 
-Angul*r updates CSS classes dynamically.*
+Angular updates CSS classes dynamically.
 ---
 
 # ngStyle
 
 Example:
 
-```type*cript
+```typescript
 styles = {
    color:'green'
 *;
@@ -448,62 +451,62 @@ Angular applies styles dynamically.
 # Property Binding vs Attribute Directives
 A frequent source of confusion.
 
-*--
+---
 
 ## Native DOM Property
 
-```htm*
+```html
 <img [src]="imageUrl">
 ```
 
-Targe*:
+Target:
 
 ```javascript
 img.src
 ```
 
-Nati*e browser property.
+Native browser property.
 
 ---
 
-## Direc*ive Input
+## Directive Input
 
 ```html
-<div [ngClass]=*cssClass">
+<div [ngClass]="cssClass">
 ```
 
 Target:
 
-```typesc*ipt
+```typescript
 NgClass Directive
 ```
 
-Angular*passes the value to the directive.*
-The directive decides how to upda*e the DOM.
+Angular passes the value to the directive.
+The directive decides how to update the DOM.
 
 ---
 
-# Visual Comparis*n
+# Visual Comparison
 
 ```text
 [src]
  ↓
-Native DOM Pro*erty
+Native DOM Property
 
 --------------------
 
-[ngCla*s]
+[ngClass]
  ↓
 Angular Directive
  ↓
-Directi*e Manipulates DOM
+Directive Manipulates DOM
 ```
 
 ---
 
-# Mode*n Angular Control Flow
+# Modern Angular Control Flow
 
-Modern Ang*lar:
+Modern Angular:
 
 ```html
 @if
@@ -511,31 +514,31 @@ Modern Ang*lar:
 @for
 ```
 
-Prefe*red approach.
+Preferred approach.
 
 ---
 
-# Legacy Angul*r Control Flow
+# Legacy Angular Control Flow
 
 Older Angular:
 
-``*html
+```html
 *ngIf
 
 *ngFor
 ```
 
-Still comm*nly encountered.
+Still commonly encountered.
 
-Interviewers may*ask both.
+Interviewers may ask both.
 
 ---
 
-# Built-In Directi*es Commonly Used
+# Built-In Directives Commonly Used
 
 ## Structural
 
-M*dern:
+Modern:
 
 ```html
 @if
@@ -543,7 +546,7 @@ M*dern:
 @for
 ```
 
-Lega*y:
+Legacy:
 
 ```html
 *ngIf
@@ -551,97 +554,100 @@ Lega*y:
 *ngFor
 ```
 
----*
+---
+
 ## Attribute
 
 ```html
 [ngClass]
 
-*ngStyle]
+[ngStyle]
 ```
 
 ---
 
-# Custom Direct*ves
+# Custom Directives
 
-Angular allows creation of cu*tom directives.
+Angular allows creation of custom directives.
 
 Example:
 
-```type*cript
+```typescript
 @Directive({
-   selector:'[a*pHighlight]'
+   selector: '[appHighlight]'
 })
-export class Highl*ghtDirective {}
+export class HighlightDirective {}
 ```
 
 Usage:
 
-```ht*l
+```html
 <div appHighlight>
 ```
 
-Purpose:*
+Purpose:
 ```text
 Reusable DOM behavior
-```*
+```
 Common enterprise use cases:
 
-- H*ghlighting
+- Highlighting
 - Auto Focus
-- Permissi*n Based UI
+- Permission Based UI
 - Input Formatting
 
----*
+---
+
 # Real Enterprise Example
 
-Employ*e Portal
+Employee Portal
 
 ```html
-@if(user.canDele*e)
+@if(user.canDelete)
 {
    <button>Delete</button>
 }
-*``
+```
 
 Structural Directive.
 
 ---
 
-``*html
+```html
 <button
-   [ngClass]="buttonC*ass">
+   [ngClass]="buttonClass">
 ```
 
 Attribute Directive.
 
--*-
+---
 
 ```html
 <input appAutoFocus>
-``*
+```
 
 Custom Directive.
 
 ---
 
-# How Di*ectives Fit Into Angular Architect*re
+# How Directives Fit Into Angular Architecture
 
 ```text
 Component
       ↓
-Temp*ate
+Template
       ↓
 Directives
       ↓
-DOM*```
+DOM
+```
 
-Templates declare Directives.*
-Directives modify rendering behav*or.
+Templates declare Directives.
+Directives modify rendering behavior.
 
 ---
 
-# Modern Angular (16+/17*/18+)
+# Modern Angular (16+/17+/18+)
 
 Preferred syntax:
 
@@ -653,135 +659,138 @@ Preferred syntax:
 
 Benefits:
 
-- Cleaner*templates
+- Cleaner templates
 - Easier learning
-- Bett*r readability
-- More familiar synt*x
+- Better readability
+- More familiar syntax
 
 ---
 
 # Legacy Angular Approach
-*```html
+
+```html
 *ngIf
 
 *ngFor
 ```
 
-Still e*tremely common in production syste*s.
+Still extremely common in production systems.
 
-A good Angular developer shoul* know both.
+A good Angular developer should know both.
 
 ---
 
-# Why Angular Ch*nged
+# Why Angular Changed
 
 Goals:
 
 - Reduce complexity
-* Improve readability
-- Align templ*te syntax with JavaScript/TypeScri*t
+- Improve readability
+- Align template syntax with JavaScript/TypeScript
 - Improve developer experience
 
-*--
+---
 
 # Common Interview Traps
 
-## T*ap 1
+## Trap 1
 
 Thinking:
 
 ```html
 *ngIf
-```*
+```
 hides an element.
 
 Incorrect.
 
-It*removes the element from the DOM.
-*---
+It removes the element from the DOM.
+---
 
 ## Trap 2
 
 Thinking:
 
-```html*[hidden]
-```
-
-is equivalent to:
-
-`*`html
-*ngIf
-```
-
-Not true.
-
-```htm*
+```html
 [hidden]
 ```
 
-Element exists but *s hidden.
+is equivalent to:
 
 ```html
 *ngIf
 ```
 
-Elem*nt is removed.
+Not true.
+
+```html
+[hidden]
+```
+
+Element exists but is hidden.
+
+```html
+*ngIf
+```
+
+Element is removed.
 
 ---
 
 ## Trap 3
 
-Co*fusing:
+Confusing:
 
 ```html
 [src]
 ```
 
 with:
-*```html
+
+```html
 [ngClass]
 ```
 
-Both use pr*perty binding syntax.
+Both use property binding syntax.
 
-One targets*a DOM property.
+One targets a DOM property.
 
-One targets a Dir*ctive.
+One targets a Directive.
 
 ---
 
-# Common Interview Qu*stions
+# Common Interview Questions
 
 ## What is a Directive?
 
-A*Directive is a class that modifies*the behavior, appearance, or struc*ure of DOM elements.
+A Directive is a class that modifies the behavior, appearance, or structure of DOM elements.
 
 ---
 
-## Type* of Directives?
+## Types of Directives?
 
-1. Component Dire*tives
+1. Component Directives
 2. Structural Directives
-3. *ttribute Directives
+3. Attribute Directives
 
 ---
 
-## What *s a Structural Directive?
+## What is a Structural Directive?
 
-A Direc*ive that adds, removes, or repeats*elements in the DOM.
+A Directive that adds, removes, or repeats elements in the DOM.
 
 ---
 
-## Exam*les of Structural Directives?
+## Examples of Structural Directives?
 
-Mod*rn:
+Modern:
 
 ```html
 @if
 @for
 ```
 
-Legacy:*
+Legacy:
 ```html
 *ngIf
 *ngFor
@@ -789,39 +798,39 @@ Legacy:*
 
 ---
 
-##*What is an Attribute Directive?
+## What is an Attribute Directive?
 
-A*Directive that changes appearance *r behavior without modifying DOM s*ructure.
+A Directive that changes appearance or behavior without modifying DOM structure.
 
 ---
 
-## Examples of Attr*bute Directives?
+## Examples of Attribute Directives?
 
 ```html
-[ngClass*
+[ngClass]
 [ngStyle]
 ```
 
 ---
 
-## Difference*Between Structural and Attribute D*rectives?
+## Difference Between Structural and Attribute Directives?
 
 Structural:
 
 ```text
-Ch*nges DOM Structure
+Changes DOM Structure
 ```
 
-Attribute:*
+Attribute:
 ```text
-Changes Appearance/Behavi*r
+Changes Appearance/Behavior
 ```
 
 ---
 
-## Why Only One Struct*ral Directive Per Element?
+## Why Only One Structural Directive Per Element?
 
-Angula* can apply only one structural tra*sformation to an element at a time*
+Angular can apply only one structural transformation to an element at a time.
 
 <!-- navigation-start -->
 

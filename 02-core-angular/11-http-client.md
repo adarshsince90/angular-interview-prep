@@ -650,7 +650,7 @@ Extremely common interview question.
 
 ---
 
-# Why HttpClient Returns Observable<T>
+# Why HttpClient Returns `Observable<T>`
 
 Many developers ask:
 

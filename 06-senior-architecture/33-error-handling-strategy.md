@@ -10,7 +10,7 @@
 
 ## Recommended Depth
 
-**Senior**rchitect**evel Understanding**
+**Senior / Architect Level Understanding**
 
 ## Relevant For
 

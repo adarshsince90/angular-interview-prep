@@ -927,8 +927,7 @@ To provide:
 - Dependency Injection Support
 - Decorators
 - Metadata
-
----
+---
 
 ## Interface vs Type?
 
@@ -969,7 +968,113 @@ Angular uses metadata to understand how a class should participate in the framew
 
 ## How does Dependency Injection benefit from TypeScript?
 
-Type information helps Angular identify and resolve
+Type information helps Angular identify and resolve constructor dependencies automatically via reflection metadata (`reflect-metadata` / `emitDecoratorMetadata`). When you inject a service via constructor injection:
+```typescript
+constructor(private employeeService: EmployeeService) {}
+```
+TypeScript emits metadata about the parameter type, enabling Angular's DI container to find and inject the corresponding `EmployeeService` singleton token automatically. In modern Angular, the `inject(EmployeeService)` function also leverages TypeScript generics to infer the return type with zero type casting.
+
+---
+
+## What are Generics and how does Angular rely on them?
+
+Generics provide a way to create reusable code components that work with a variety of types rather than a single one, while maintaining full compile-time type safety. Angular uses Generics extensively:
+- **HttpClient**: `this.http.get<Employee[]>('/api/employees')`
+- **Signals**: `readonly count = signal<number>(0)`
+- **Component Inputs**: `readonly employee = input.required<Employee>()`
+- **RxJS Operators**: `Observable<T>`, `map((data: T) => ...)`
+
+---
+
+## What is the difference between `any`, `unknown`, and `never`?
+
+| Type | Description | Type Safety |
+| :--- | :--- | :--- |
+| `any` | Disables all TypeScript type checking; bypasses compiler | None (Dangerous in enterprise codebases) |
+| `unknown` | Type-safe counterpart of `any`; value can be anything, but cannot be operated on without type narrowing/checking | High (Requires `typeof`, `instanceof`, or type guards) |
+| `never` | Represents values that never occur (e.g., functions that always throw or infinite loops; exhaustive switch cases) | Total (Used for compile-time exhaustiveness checking) |
+
+---
+
+# Senior-Level Discussion: TypeScript as Enterprise Boundary Defense
+
+For senior developers and architects, TypeScript is not just a syntax convenience—it is the **primary boundary defense mechanism**:
+
+```text
+EXTERNAL WORLD (Untrusted)               INTERNAL ANGULAR APPLICATION (Type-Safe)
+┌───────────────────────────────┐        ┌────────────────────────────────────────┐
+│ - REST API JSON Payloads      │        │ - Strong TypeScript Interfaces & Models│
+│ - LocalStorage strings        │───────►│ - Zod / Type-Guard Validation at Gate │
+│ - URL Route Parameters        │ Parse  │ - 100% deterministic type safety       │
+│ - Third-party SDKs            │        │ - Zero runtime undefined exceptions    │
+└───────────────────────────────┘        └────────────────────────────────────────┘
+```
+
+1. **Compile-Time vs Runtime**: TypeScript checks types at compile-time, but TypeScript types are completely erased in the browser bundle. Boundary data from backend APIs should be validated at the HTTP boundary using type guards or validation libraries (like Zod).
+2. **Strict Mode Hygiene**: Enterprise Angular projects should always enable `"strict": true`, `"strictNullChecks": true`, and `"noImplicitAny": true` in `tsconfig.json` to prevent null-reference errors.
+
+---
+
+# Architecture Considerations
+
+```text
+                      TYPESCRIPT ARCHITECTURE RULES
+                                    │
+      ┌─────────────────────────────┼─────────────────────────────┐
+      ▼                             ▼                             ▼
+NO ANY POLICY                 EXPLICIT CONTRACTS            IMMUTABLE MODELS
+- Strictly ban `any`          - Define DTOs in domain libs  - Mark signal states
+- Use `unknown` with guards   - Interface for public APIs   - Use `readonly` arrays
+- Enforce via ESLint rules    - Share DTOs with backend     - Prevent silent mutations
+```
+
+---
+
+# Diagram: TypeScript Compilation & DI Metadata Pipeline
+
+```text
+┌────────────────────────────────────────────────────────┐
+│            TypeScript Source (.ts files)               │
+│  - @Component / @Injectable metadata decorators       │
+│  - Static types, Interfaces, Signal definitions        │
+└───────────────────────────┬────────────────────────────┘
+                            │
+              Angular Compiler (ngc) + tsc
+                            │
+        ┌───────────────────┴───────────────────┐
+        ▼                                       ▼
+┌───────────────────────┐               ┌───────────────────────┐
+│ Clean JavaScript (ESM)│               │ Component Definitions │
+│ - Types erased        │               │ - Ivy Instructions    │
+│ - Classes retained    │               │ - Injected Tokens     │
+│ - Runtime execution   │               │ - Compiled Templates  │
+└───────────────────────┘               └───────────────────────┘
+```
+
+---
+
+# Key Takeaways
+
+1. **Enterprise Foundation**: TypeScript gives Angular compile-time type checking, refactoring safety, and autocompletion essential for large multi-team applications.
+2. **Dependency Injection Power**: TypeScript types serve as the tokens that power Angular's hierarchical DI container.
+3. **Generics Everywhere**: Angular leverages Generics across `HttpClient`, `Signals`, and `RxJS` to ensure end-to-end data contract safety.
+4. **Interfaces vs Types**: Use Interfaces for public API and domain entity contracts; use Types for unions, primitives, and complex mapped transformations.
+5. **Strict Typing**: Enterprise standards mandate `"strict": true` and strict avoidance of `any`.
+
+---
+
+# Interview Notes (Revision Version)
+
+## Definition
+TypeScript is a strongly typed superset of JavaScript that compiles to plain JavaScript, providing static typing, interfaces, generics, and decorator metadata essential for Angular's enterprise architecture.
+
+## Key Distinctions
+- **Interface vs Type**: Interfaces are extendable object contracts; Types support unions (`|`), intersections (`&`), and utility aliases.
+- **`any` vs `unknown`**: `any` disables type checking; `unknown` requires type narrowing before usage.
+- **Decorators**: Attach configuration metadata to classes, properties, and parameters.
+
+## DI Integration
+TypeScript parameter types allow Angular to resolve and inject singletons without manual wiring. Modern Angular also uses `inject<T>()` with full generic type inference.
 
 <!-- navigation-start -->
 

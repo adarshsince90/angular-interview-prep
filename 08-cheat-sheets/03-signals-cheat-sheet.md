@@ -1,7 +1,8 @@
 # Signals Cheat Sheet
 
-# Core APIs
+## Core APIs
 
+```text
 signal()
 
 computed()

@@ -1194,181 +1194,186 @@ export class EmployeeComponent {
 <ul>
   <li *ngFor="let employee of employees">
   * {{ employee }}
-  </*i>
+  </li>
 </ul>
 ```
 
-### What Angular Doe* Internally
+### What Angular Does Internally
 
 Conceptually:
 
-```typ*script
+```typescript
 const service =
-    injecto*.get(EmployeeService);
+    injector.get(EmployeeService);
 
-component.*mployeeService =
+component.employeeService =
     service;
 ```
-*Angular performs this automaticall*.
+*Angular performs this automatically.*
 
 ---
 
-#*Example 2: Modern inject() API
+# Example 2: Modern inject() API
 
-St*rting with newer*Angular versions, dependencies*can also be obtained using the*`inject()` function.
+Starting with newer Angular versions, dependencies can also be obtained using the `inject()` function.
 
 ### Service
-*```typescript
-@Injectable({
-  prov*dedIn: 'root'
-})
-export class Empl*yeeService {
 
-  getEmployees(): st*ing[] {
-   *return ['*darsh', 'John', 'Mary'];
+```typescript
+@Injectable({
+  providedIn: 'root'
+})
+export class EmployeeService {
+
+  getEmployees(): string[] {
+   return ['Adarsh', 'John', 'Mary'];
   }
 
 }
-``*
+```
 
 ### Component
 
 ```typescript
-imp*rt {
+import {
   Component,
-  inject*} from '@angular/core';
+  inject } from '@angular/core';
 
-@Componen*({
+@Component({
   selector: 'app-employee',
-  s*andalone:*true,
-  template* `<h2>Employees</h2>`
+  standalone: true,
+  template: `<h2>Employees</h2>`
 })
-export cl*ss EmployeeComponent {
+export class EmployeeComponent {
 
-  private *mployeeService =
-      inject*EmployeeService);
+  private employeeService =
+      inject(EmployeeService);
 
 }
 ```
 
-*## Why Angular*Introduced inject()
+## Why Angular Introduced inject()
 
 Benefits:
 
-``*text
+```text
 Cleaner Code
 
-Works Outside C*nstructors
+Works Outside Constructors
 
-Useful For Functional *uards
+Useful For Functional Guards
 
-Useful For Functional Inter*eptors
+Useful For Functional Interceptors
 
-Useful For Standalone APIs*```
+Useful For Standalone APIs
+```
 
 ---
 
-#*Example 3: Service Depending*On Another Service
+# Example 3: Service Depending On Another Service
 
-Services*themselves can have dependencies.
-*###*Service
+Services themselves can have dependencies.
+### Service
 
-```typescript*@Injectable({
-  providedIn: 'root'*})
+```typescript
+@Injectable({
+  providedIn: 'root'
+})
 export class EmployeeService {
 *  constructor(
-      private http:*HttpClient
+      private http: HttpClient
   ) {
   }
 
-  get*mployees() {
+  getEmployees() {
 *   return this.http.get<Employee[]*(
       '/api/employees'
     );
-  *
 
 }
-``*
+```
 
 ### Dependency Chain
 
-```text*EmployeeComponent
-           │*           ▼
+```text
+EmployeeComponent
+           │           ▼
 
 EmployeeService
-    *      │
+           │
            ▼
 
-HttpClient*           │*           ▼
+HttpClient            │           ▼
 
 Backend API
-``*
+```
 
-Angular*resolves the*entire dependency chain automatica*ly.
+Angular resolves the entire dependency chain automatically.
 
-This is one of the key reason* DI exists.
+This is one of the key reasons DI exists.
 
 ---
 
-# Example 4: Mul*iple Dependencies
+# Example 4: Multiple Dependencies
 
-A Component can*receive multiple dependencies.
+A Component can receive multiple dependencies.
 
-``*typescript
+```typescript
 constructor(
-  private *mployeeService: EmployeeService,
- *private authService: AuthService,
-* private notificationService: Noti*icationService
+  private employeeService: EmployeeService,
+  private authService: AuthService,
+* private notificationService: NotificationService
 ) {
 }
 ```
 
-*ngular resolves*all dependencies automatically.
+Angular resolves all dependencies automatically.
 
-#*#*Visual Representation
+### Visual Representation
 
 ```text
-Emp*oyeeComponent
+EmployeeComponent
 
      │
-     ├── Emp*oyeeService
+     ├── EmployeeService
      │
-     ├── AuthSe*vice
+     ├── AuthService
      │
-     └── NotificationS*rvice
+     └── NotificationService
 ```
 
 ---
 
-# Example 5: Compo*ent-Level Provider
+# Example 5: Component-Level Provider
 
-Most applicati*ns use:
+Most applications use:
 
 ```typescript
-providedIn:*'root'
+providedIn: 'root'
 ```
 
-Sometimes*we want a separate Service instanc* per Component.
+Sometimes we want a separate Service instance per Component.
 
 ### Component
 
-``*typescript
+```typescript
 @Component({
-  selector* 'app-employee',
-  standalone* true,
-  providers* [EmployeeService],
-  template* `<h2>Employees</h2>`
+  selector: 'app-employee',
+  standalone: true,
+  providers: [EmployeeService],
+  template: `<h2>Employees</h2>`
 })
-export cl*ss EmployeeComponent {
+export class EmployeeComponent {
 }
 ```
 
-### *esult
+### Result
 
-```text*Employee*omponent #1
+```text
+EmployeeComponent #1
         │
         ▼
-Em*loyeeService #1
+EmployeeService #1
 
 -----------------*
 EmployeeComponent #2
@@ -1377,68 +1382,69 @@ EmployeeComponent #2
 EmployeeService #2
 ```
 
-Eac* Component receives its own Servic* instance.
+Each Component receives its own Service instance.
 
 ---
 
-# Root Provider v* Component Provider
+# Root Provider vs Component Provider
 
-## Root Provi*er
+## Root Provider
 
 ```typescript
 @Injectable({
-  *rovidedIn: 'root'
+  providedIn: 'root'
 })
 ```
 
 Result:
-*```text
+
+```text
 Single Shared Instance
-Acr*ss Entire Application
-```
-
-Use Cas*s:
-
-```text
-Authentication
-
-Curren**User*
-Theme
-
-Configuration
-
-Application*State
-```
-
----
-
-## Component Provi*er
-
-```typescript
-@Component({
-  p*oviders: [EmployeeService]
-})
-```
-*Result:
-
-```text
-Separate Instance*Per Component
+Across Entire Application
 ```
 
 Use Cases:
 
-```*ext
-Independent Forms
+```text
+Authentication
 
-Draft State*
-Wizard Screens
+Current User
+Theme
 
-Feature-Specific *ontext
+Configuration
+
+Application State
 ```
 
 ---
 
-# Complete Depend*ncy Resolution Flow
+## Component Provider
+
+```typescript
+@Component({
+  providers: [EmployeeService]
+})
+```
+Result:
+
+```text
+Separate Instance Per Component
+```
+
+Use Cases:
+
+```text
+Independent Forms
+
+Draft State
+Wizard Screens
+
+Feature-Specific Context
+```
+
+---
+
+# Complete Dependency Resolution Flow
 
 ```text
 User
@@ -1446,44 +1452,44 @@ User
 
  ▼
 
-EmployeeComponent*
+EmployeeComponent
  │
- │ requests* ▼
+ │ requests ▼
 
 EmployeeService
 
  │
- │ depends*on
+ │ depends on
  ▼
 
-*ttpClient
+HttpClient
 
  │
- │*performs request
+ │ performs request
  ▼
 
 Backend API
 
-*│
+ │
  ▼
 
 Database
 
-──────────────────*───────
+─────────────────────────
 
 Response Flow
 
 Database
 
-*│
+ │
 
  ▼
 
-*ackend*API
+Backend API
 
  │
 
-*▼
+ ▼
 
 HttpClient
 
@@ -1491,19 +1497,19 @@ HttpClient
 
  ▼
 
-EmployeeSer*ice
+EmployeeService
 
  │
 
  ▼
 
-*mployeeComponent
+EmployeeComponent
 
  │
 
  ▼
 
-Template*
+Template
  │
 
  ▼
@@ -1511,26 +1517,27 @@ Template*
 User
 ```
 
-This is the mos* important Angular architecture di*gram to remember.
+This is the most important Angular architecture diagram to remember.
 
 ---
 
-# Angular *s ASP.NET Core DI
+# Angular vs ASP.NET Core DI
 
 Angular
 
-### Re*istration
+### Registration
 
 ```typescript
-@Injectab*e({
+@Injectable({
   providedIn: 'root'
 })
 ```
 
-*## Consumption
+## Consumption
 
-```typescript*constructor(
-  private*employeeService:*EmployeeService
+```typescript
+constructor(
+  private employeeService: EmployeeService
 )
 {
 }
@@ -1540,34 +1547,34 @@ Angular
 
 ASP.NET Core
 
-### Registration*
+### Registration
 ```csharp
 builder.Services
-      *.AddSingleton<EmployeeService>();
-*``
+      .AddSingleton<EmployeeService>();
+```
 
 ### Consumption
 
-```c*harp
+```csharp
 public EmployeeController(
   * EmployeeService service)
 {
 }
 ```
-*Conceptually both frameworks*use the same Dependency*Injection pattern.
+Conceptually both frameworks use the same Dependency Injection pattern.
 
 ---
 
-* Interview Visualization
+## Interview Visualization
 
-```*ext
+```text
 Component
 
      *│
 
       ▼
 
-Requests Dependency*
+Requests Dependency
       │
 
       ▼
@@ -1578,7 +1585,7 @@ Injector
 
       ▼
 
-Creates*Or*Resolves
+Creates Or Resolves
 
      *│
 
@@ -1590,18 +1597,18 @@ Dependency Returned
 
       ▼
 
-Component Uses Dep*ndency
+Component Uses Dependency
 ```
 
-*ey idea:
+Key idea:
 
-```text*Component Uses Dependency
+```text
+Component Uses Dependency
 
-Angular*Creates Dependency
+Angular Creates Dependency
 ```
 
-*hat separation is the entire purpo*e of Dependency Injection.
-````*
+That separation is the entire purpose of Dependency Injection.
 
 <!-- navigation-start -->
 

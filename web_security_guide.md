@@ -12,7 +12,7 @@ A web browser treats any script inside an HTML document as executable code runni
 ### 💥 Practical Scenarios & Code Examples
 
 #### Reflected XSS
-* **Scenario:** A search page displays the user's query back to them: `"Results for: <query>"`.
+* **Scenario:** A search page displays the user's query back to them: `"Results for: `<query>`"`.
 * **Exploit Vector:** An attacker sends a victim a link containing a script payload in the query parameter.
 * **Payload:** 
   ```text

@@ -981,13 +981,13 @@ Request ID
 Interceptor
 
 ```typescript
-const request =
-   req.clone({
-
-      setHeaders: {
-
-        'X-Correlation-ID':
-            crypto.randomUUID
+const request = req.clone({
+  setHeaders: {
+    'X-Correlation-ID': crypto.randomUUID()
+  }
+});
+return next(request);
+```
 
 <!-- navigation-start -->
 

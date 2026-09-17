@@ -1367,11 +1367,11 @@ should usually be the **st route.
 
 ---
 
-# Senior-Level Me**al Model
+# Senior-Level Mental Model
 
 Think of routing as:
 
-`**text
+```text
 URL
 
 ↓
@@ -1380,18 +1380,18 @@ Angular Router
 
 ↓
 
-R**te Configuration
+Route Configuration
 
 ↓
 
-Matched Comp**ent
+Matched Component
 
 ↓
 
 router-outlet
 ```
 
-Everyt**ng else:
+Everything else:
 
 ```text
 Parameters
@@ -1402,17 +1402,17 @@ Resolvers
 Guards
 
 Lazy Loading
-**`
+```
 
-builds on top of that foundati**.
+builds on top of that foundation.
 
 ---
 
 # Key Takeaways
 
-1. Angul** Router maps URLs to components.
-** Routing enables SPA navigation w**hout page reloads.
-3. Routes defi** URL-to-component mappings.
+1. Angular Router maps URLs to components.
+2. Routing enables SPA navigation without page reloads.
+3. Routes define URL-to-component mappings.
 4. router-outlet is where routed components render.
 5. routerLink is used for template navigation.
 6. router.navigate() is used for programmatic navigation.

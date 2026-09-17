@@ -279,7 +279,7 @@ Template:
 </div>
 ```
 
-Where *oes:
+Where does:
 
 ```typescript
 *ngIf
@@ -289,136 +289,140 @@ Where *oes:
 
 Not your component.
 
-*t comes*from:
+It comes from:
 
 ```typescript
 CommonModule
-*``
+```
 
 Therefore:
 
 ```typescript
-impo*ts: [
-  Common*odule
+imports: [
+  CommonModule
 ]
 ```
 
-*--
+---
 
 # Another Example
 
 Template:
 
-*``html
+```html
 <form [formGroup]="form">
-<*form>
+<form>
 ```
 
 Requires:
 
-```typescrip*
+```typescript
 ReactiveFormsModule
 ```
 
 inside:
-*```typescript
+
+```typescript
 imports:[]
 ```
 
 ---
-*# Mental Model
 
-```text*imports
+## Mental Model
+
+```text
+imports
 
 =
 
-Things*Others Created
+Things Others Created
 
-That*I Want To Use
+That I Want To Use
 ```
-
-*--
-
-# exports
-
-*# Purpose
-
-Make things*available to other modules.
 
 ---
 
-*xample
+# exports
+
+## Purpose
+
+Make things available to other modules.
+
+---
+
+Example
 
 ```typescript
 @NgModule({
-*  declarations: [
+  declarations: [
 
-    Employee*omponent
+    EmployeeComponent
 
   ],
 
   exports: [
 
-   *EmployeeComponent
+    EmployeeComponent
 
   ]
 
 })
 ```
 
---*
+---
 
-*ow other modules can use:
+Now other modules can use:
 
-```html*<app-employee>
+```html
+<app-employee>
 </app-employee>
-```*
+```
 ---
 
 # Why exports Exists
 
-Withou* exports:
+Without exports:
 
 ```text
 Module A
 ```
 
-c*nnot automatically use:
+cannot automatically use:
 
 ```text
-M*dule B Components
+Module B Components
 ```
 
 ---
 
-# Ment*l Model
+# Mental Model
 
 ```text
 exports
 
 =
 
-Make *ublic
+Make Public
 ```
 
 ---
 
 # providers
 
-Usual*y the most misunderstood section.
-*---
+Usually the most misunderstood section.
+---
 
 # Purpose
 
-Register services *ith Angular's Dependency Injection*container.
+Register services with Angular's Dependency Injection container.
 
 ---
 
 Example Service
 
-*``typescript
+```typescript
 @Injectable()
-export *lass EmployeeService {}
+export class EmployeeService {}
 ```
 
 ---
@@ -426,10 +430,10 @@ export *lass EmployeeService {}
 *egister
 
 ```typescript
-@NgModule({*
+@NgModule({
   providers: [
 
-    EmployeeServi*e
+    EmployeeService
 
   ]
 
@@ -440,55 +444,56 @@ export *lass EmployeeService {}
 
 # Why?
 
-Compo*ent:
+Component:
 
 ```typescript
 constructor(
 
 * private employeeService:
-   *Employee*ervice
+   EmployeeService
 
-**{}
-*``
+})
+```
 
 Angular asks:
 
 ```text
-Who Pro*ides EmployeeService?
+Who Provides EmployeeService?
 ```
 
-Answer:*
+Answer:
 ```typescript
 providers:[
-   Empl*yeeService
+   EmployeeService
 ]
 ```
 
 ---
 
-# Mental Mo*el
+# Mental Model
 
 ```text
 providers
 
 =
 
-Dependen*y Injection Registrations
+Dependency Injection Registrations
 ```
 
----*
+---
+
 # Dependency Injection Flow
 
-```t*xt
+```text
 Component
 
     ↓ asks for
 
-Empl*yeeService
+EmployeeService
 
     ↓
 
-Angular DI Cont*iner
+Angular DI Container
 
     ↓
 
@@ -499,65 +504,65 @@ Service Created
 
     ↓
 
-Service I*jected
+Service Injected
 ```
 
 ---
 
-# Complete Exampl*
+# Complete Example
 
 ```typescript
 @NgModule({
 
-  dec*arations: [
+  declarations: [
 
-    EmployeeComponent*
+    EmployeeComponent
   ],
 
   imports: [
 
-    CommonMod*le,
+    CommonModule,
 
     ReactiveFormsModule
 
-  ],*
+  ],
   providers: [
 
-    EmployeeServi*e
+    EmployeeService
 
   ]
 
 })
-export class EmployeeMo*ule {}
+export class EmployeeModule {}
 ```
 
 ---
 
-# Feature Modules*
-Large applications commonly organ*ze features into modules.
+# Feature Modules
+Large applications commonly organize features into modules.
 
 ---
 
-Ex*mple
+Example
 
 ```text
 EmployeeModule
 
-Admi*Module
+AdminModule
 
 ReportsModule
 
-SettingsMod*le
+SettingsModule
 ```
 
 ---
 
 Employee Module
 
-```t*pescript
+```typescript
 @NgModule({
 
-  declaratio*s: [
+  declarations: [
 
     EmployeeListComponent,
 
@@ -565,40 +570,41 @@ Employee Module
 
   ]
 
-*)
+})
 export class EmployeeModule {}
-`*`
+```
 
 ---
 
 # Shared Module
 
-Common pa*tern.
+Common pattern.
 
 Contains reusable:
 
-```text*Components
+```text
+Components
 
 Directives
 
 Pipes
 ```
-*---
+---
 
 Example
 
 ```typescript
-@NgMod*le({
+@NgModule({
 
    declarations: [
 
-      Lo*dingSpinnerComponent,
+      LoadingSpinnerComponent,
 
-      Searc*BoxComponent
+      SearchBoxComponent
 
    ],
 
-   exports: [*
+   exports: [
       LoadingSpinnerComponent,
 
  *    SearchBoxComponent
@@ -606,87 +612,88 @@ Example
    ]
 
 })
-`*`
+```
 
 ---
 
 Used across application.
 
-*--
+---
 
 # Core Module Pattern
 
-Often c*ntains:
+Often contains:
 
 ```text
-Singleton Service*
+Singleton Services
 
 Authentication
 
 Interceptors
 
-Gl*bal Configuration
+Global Configuration
 ```
 
 ---
 
-Exampl*
+Example
 
 ```typescript
 CoreModule
 ```
 
-lo*ded once for the application.
-
----*
-# Common Interview Questions
-
-## *hat Is An NgModule?
-
-Organizationa* container that registers componen*s, directives, pipes, dependencies* and services.
+loaded once for the application.
 
 ---
 
-## Difference*Between declarations And imports?
+# Common Interview Questions
+
+## What Is An NgModule?
+
+Organizational container that registers components, directives, pipes, dependencies, and services.
+
+---
+
+## Difference Between declarations And imports?
 *Declarations:
 
 ```text
-Things I Cr*ated
+Things I Created
 ```
 
 Imports:
 
 ```text
-Things*Others Created
+Things Others Created
 ```
 
-that I want to*use.
+that I want to use.
 
 ---
 
-## What Goes Into provi*ers?
+## What Goes Into providers?
 
-Services registered for Depe*dency Injection.
-
----
-
-## What Are*exports?
-
-Things other modules are*allowed to use.
+Services registered for Dependency Injection.
 
 ---
 
-# Common Int*rview Traps
+## What Are exports?
+
+Things other modules are allowed to use.
+
+---
+
+# Common Interview Traps
 
 ## Trap 1
 
-Putting se*vices into declarations.
+Putting services into declarations.
 
-Incorrec*.
+Incorrect.
 
 Services belong in:
 
-```typescr*pt
+```typescript
 providers
 ```
 
@@ -694,48 +701,49 @@ providers
 
 ## Trap 2
 
-*eclaring same component in multipl* modules.
+Declaring same component in multiple modules.
 
 Not allowed.
 
 ---
 
-## T*ap 3
+## Trap 3
 
-Confusing imports with decla*ations.
+Confusing imports with declarations.
 
 ---
 
-# Senior-Level Summa*y
+# Senior-Level Summary
 
-NgModules acted as Angular's re*istration and organization mechani*m.
+NgModules acted as Angular's registration and organization mechanism.
 
 They told Angular:
 
 ```text
-Wh*t Exists
+What Exists
 
 What Is Shared
 
-What Can*Be Used
+What Can Be Used
 
 What Can Be Injected
 ```
-*For many years they were the backb*ne of Angular architecture.
+For many years they were the backbone of Angular architecture.
 
 ---
 
-* Key Takeaways
+## Key Takeaways
 
-1. NgModules organ*zed Angular applications.
-2. decla*ations register components, direct*ves, and pipes.
-3. imports bring i* external functionality.
-4. export* make functionality available to o*her modules.
-5. providers register*services for dependency injection.*6. Feature Modules improve scalabi*ity.
-7. Shared Modules support reu*e.
-8. Core Modules provide applica*ion-wide services.
-9. NgModules re*ain important in many enterprise a*plications.
-10. Understanding NgMo*ules makes Standalone Components e*sier to understand.
+1. NgModules organized Angular applications.
+2. declarations register components, directives, and pipes.
+3. imports bring in external functionality.
+4. exports make functionality available to other modules.
+5. providers register services for dependency injection.
+6. Feature Modules improve scalability.
+7. Shared Modules support reuse.
+8. Core Modules provide application-wide services.
+9. NgModules remain important in many enterprise applications.
+10. Understanding NgModules makes Standalone Components easier to understand.
 
 <!-- navigation-start -->
 

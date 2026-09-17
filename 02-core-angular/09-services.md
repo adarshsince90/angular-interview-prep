@@ -423,7 +423,13 @@ Most commonly:
 
 ```typescript
 @Injectable({
-  providedIn
+  providedIn: 'root'
+})
+export class DataService {}
+```
+
+- **Root scope (`providedIn: 'root'`):** Single singleton instance shared across the entire application.
+- **Component scope (`providers: [DataService]`):** A distinct instance created per component instance (and its children).
 
 <!-- navigation-start -->
 

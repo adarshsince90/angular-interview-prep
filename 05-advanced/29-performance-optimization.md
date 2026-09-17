@@ -451,36 +451,36 @@ Very common interview question.
 
 Angular executes:
 
-*``typescript
+```typescript
 calculateTotal()
 ```
-*during every change detection cycl*.
+during every change detection cycle.
 
 ---
 
 Example
 
 ```typescript
-cal*ulateTotal() {
+calculateTotal() {
 
-  console.log('exe*uted');
+  console.log('executed');
 
-  return this.items.lengt*;
+  return this.items.length;
 
 }
 ```
 
 ---
 
-Potentially hundred* of executions.
+Potentially hundreds of executions.
 
 ---
 
 # Better
 
-``*typescript
+```typescript
 totalItems =
-  computed*
+  computed(
     () => this.items().length
   )*
 ```
@@ -490,48 +490,49 @@ totalItems =
 Template
 
 ```html
-{{ to*alItems() }}
+{{ totalItems() }}
 ```
 
 ---
 
-# Optimizat*on #6: Pure Pipes
+# Optimization #6: Pure Pipes
 
-Instead of reca*culating repeatedly.
+Instead of recalculating repeatedly.
 
 ---
 
-# Avoid*
+# Avoid
+
 ```html
 {{ getFullName(user) }}
-`*`
+```
 
 ---
 
 # Better
 
 ```html
-{{ user * fullName }}
+{{ user | fullName }}
 ```
 
 ---
 
-Implementat*on
+Implementation
 
 ```typescript
 @Pipe({
-  name: *fullName',
+  name: 'fullName',
   pure: true
 })
-export *lass FullNamePipe
-implements PipeT*ansform {
+export class FullNamePipe
+implements PipeTransform {
 
   transform(
-    user: *ser
+    user: User
   ): string {
 
-    return `${u*er.firstName}
-            ${user.l*stName}`;
+    return `${user.firstName}
+            ${user.lastName}`;
 
   }
 
@@ -540,45 +541,45 @@ implements PipeT*ansform {
 
 ---
 
-# Why *ure Pipes?
+# Why Pure Pipes?
 
 Execute only when:
 
-``*text
+```text
 Inputs Change
 ```
 
 ---
 
-# Ben*fits
+# Benefits
 
 ```text
 Less CPU Work
 
-Clean*r Templates
+Cleaner Templates
 
-Predictable Performan*e
+Predictable Performance
 ```
 
 ---
 
-# Optimization #7: Mem*ization
+# Optimization #7: Memoization
 
-Useful for expensive calc*lations.
+Useful for expensive calculations.
 
 ---
 
 Example
 
-```typescr*pt
+```typescript
 calculateReport(
-  reportId: st*ing
+  reportId: string
 ) {
 
   // expensive logic
 
 }
-`*`
+```
 
 ---
 

@@ -1,125 +1,125 @@
 # Standalone Components
 
-## I*terview Priority
+## Interview Priority
 
-**Must Know (Ang*lar 15+)**
+**Must Know (Angular 15+)**
 
-## Interview Frequency*
+## Interview Frequency
 **Very Common**
 
-## Recommended D*pth
+## Recommended Depth
 
 **Expert Level Understanding**
 
 ## Relevant For
 
-- Modern Angula* Development
+- Modern Angular Development
 - Angular 15+
-- Angul*r 16+
+- Angular 16+
 - Angular 17+
-- Senior Devel*per Interviews
+- Senior Developer Interviews
 
 ---
 
-# Why Were St*ndalone Components Introduced?
+# Why Were Standalone Components Introduced?
 
-Th*s is the most important question.
-*---
+This is the most important question.
+---
 
 # Problem With NgModules
 
-To *reate one component:
+To create one component:
 
-```typescrip*
+```typescript
 EmployeeComponent
 ```
 
-Angular re*uired:
+Angular required:
 
 ```text
 Component
 
    ↓
 
-F*ature Module
+Feature Module
 
    ↓
 
 App Module
-```*
-Lots of registration and boilerpl*te.
+```
+Lots of registration and boilerplate.
 
 ---
 
 # Angular's Question
 
-Wh* should components require modules*to exist?
+Why should components require modules to exist?
 
 ---
 
 Traditional:
 
-```t*xt
+```text
 Declare Component
 
-Register Com*onent
+Register Component
 
 Export Component
 
-Import Mo*ule
+Import Module
 
 Use Component
 ```
 
 ---
 
-Angul*r wanted:
+Angular wanted:
 
 ```text
 Component
 
 ↓
 
-U*e Component
+Use Component
 ```
 
 Much simpler.
 
---*
+---
 
-# What Is A Standalone Component*
+# What Is A Standalone Component?
 
-A component that can exist witho*t being declared in an NgModule.
+A component that can exist without being declared in an NgModule.
 
-*--
+---
 
 Example
 
 ```typescript
-@Compon*nt({
+@Component({
 
   standalone: true,
 
-  templ*te: `
+  template: `
     <h1>Hello</h1>
   `
 
 })
-e*port class EmployeeComponent {
+export class EmployeeComponent {
 }
-`*`
+```
 
 ---
 
 # The Biggest Change
 
-Trad*tional Angular:
+Traditional Angular:
 
 ```typescript
-@Ng*odule({
+@NgModule({
 
   declarations:[
-     Emp*oyeeComponent
+     EmployeeComponent
   ]
 
 })
@@ -127,52 +127,52 @@ Trad*tional Angular:
 
 ---
 
-St*ndalone Angular:
+Standalone Angular:
 
 ```typescript
-@C*mponent({
+@Component({
 
-  standalone:true
+  standalone: true
 
 })
-`*`
+```
 
 No declaration required.
 
 ---
 
-* What Happened To declarations?
+## What Happened To declarations?
 
-I* disappeared.
+It disappeared.
 
 ---
 
 Why?
 
 ```text
-*omponent Already Knows
-It Is A Com*onent
+Component Already Knows
+It Is A Component
 ```
 
-Angular no longer needs*
+Angular no longer needs
 
 ```typescript
 declarations:[]
-``*
+```
 
 ---
 
-# Imports In Standalone Com*onents
+# Imports In Standalone Components
 
 Imports still exist.
 
-But *ove closer to where they are used.*
+But move closer to where they are used.
 ---
 
 Old
 
 ```typescript
-@NgModule*{
+@NgModule({
 
   imports:[
      CommonModule
@@ -185,7 +185,8 @@ Old
 
 New
 
-```typescript*@Component({
+```typescript
+@Component({
 
   standalone:true,
 
@@ -200,61 +201,61 @@ New
 
 # Real Example
 
-```typ*script
+```typescript
 @Component({
 
-  standalone:*rue,
+  standalone: true,
 
   imports:[
 
-      CommonMod*le,
+      CommonModule,
 
       ReactiveFormsModule
 
   *
 
 })
-export class EmployeeComponen* {}
+export class EmployeeComponent {}
 ```
 
 ---
 
-Template now support*:
+Template now supports:
 
 ```html
 *ngIf
 
 *ngFor
 
-formGrou*
+formGroup
 ```
 
-because dependencies were im*orted directly.
+because dependencies were imported directly.
 
 ---
 
-# Mental Mod*l
+# Mental Model
 
 ```text
 Standalone Imports
 
 =
 
-*hat This Component Uses
+What This Component Uses
 ```
 
 ---
 
-* Direct Component Imports
+## Direct Component Imports
 
-Huge ch*nge.
+Huge change.
 
 ---
 
 Traditional
 
 ```text
-Co*ponent
+Component
 
  ↓
 
@@ -263,13 +264,13 @@ Module
  ↓
 
 Module
-```*
+```
 ---
 
 Standalone
 
 ```text
-Componen*
+Component
 
  ↓
 
@@ -279,10 +280,11 @@ Component
 ---
 
 Example
-*```typescript
+
+```typescript
 @Component({
 
-  stan*alone:true,
+  standalone: true,
 
   imports:[
 
@@ -293,79 +295,79 @@ Example
 })
 ```
 
--*-
+---
 
 Now template can use:
 
 ```html
-*app-employee-card>
-</app-employee-*ard>
+<app-employee-card>
+</app-employee-card>
 ```
 
 directly.
 
 ---
 
-# What H*ppened To exports?
+# What Happened To exports?
 
-Mostly unneces*ary.
+Mostly unnecessary.
 
 ---
 
 Old
 
 ```typescript
-expo*ts:[
+exports: [
    EmployeeComponent
 ]
 ```
 
--*-
+---
 
 New
 
 ```typescript
 imports:[
-  *EmployeeComponent
+  EmployeeComponent
 ]
 ```
 
-Direct us*ge.
+Direct usage.
 
 No export layer.
 
 ---
 
-# Depe*dency Injection
+# Dependency Injection
 
-Providers still e*ist.
+Providers still exist.
 
 ---
 
 # Preferred Approach
 
-`*`typescript
+```typescript
 @Injectable({
 
-  provi*edIn:'root'
+  providedIn: 'root'
 
 })
-export class Emplo*eeService {}
+export class EmployeeService {}
 ```
 
 ---
 
-Application*wide singleton.
+Application-wide singleton.
 
 ---
 
-# Component *cope Providers
+# Component Scope Providers
 
 Possible.
 
 ---
 
-Ex*mple
+Example
 
 ```typescript
 @Component({
@@ -381,24 +383,24 @@ Ex*mple
 })
 ```
 
-*--
+---
 
 Meaning:
 
 ```text
-New Service *nstance
+New Service Instance
 
 For This Component Tree
-`*`
+```
 
 ---
 
 # Bootstrapping
 
-Old Angul*r:
+Old Angular:
 
 ```typescript
-platformBrowserD*namic()
+platformBrowserDynamic()
   .bootstrapModule(
        AppModule
   );
